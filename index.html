@@ -1,14 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía turística digital de mi ciudad</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Guía turística digital de Managua, Nicaragua</title>
+    <link rel="stylesheet" href="estilo.css" />
     <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <header class="site-header">
+        <div class="container">
+            <h1>Guía turística digital de Managua</h1>
+            <p class="tagline">Bienvenido a Managua — descubre historia, lugares y sabores</p>
+            <nav aria-label="Navegación principal" class="main-nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#historia">Historia</a></li>
+                    <li><a href="#lugares">Lugares turísticos</a></li>
+                    <li><a href="#gastronomia">Gastronomía</a></li>
+                    <li><a href="#contacto">Contacto / Mapa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <main class="container">
+        <!-- INICIO -->
+        <section id="inicio" class="section inicio">
+            <h2>Inicio</h2>
+            <p>Bienvenido a la guía digital de Managua, la capital de Nicaragua. Explora la historia, recorre sus miradores y disfruta la gastronomía local. Esta guía es útil para visitantes y residentes que quieren redescubrir la ciudad.</p>
+            <div class="cta">
+                <a class="btn" href="#lugares">Ver lugares destacados</a>
+                <a class="btn secondary" href="#gastronomia">Probar la gastronomía</a>
+            </div>
+        </section>
+
+        <!-- HISTORIA -->
+        <section id="historia" class="section historia">
+            <h2>Historia</h2>
+            <article>
+                <p>La cuenca del lago Xolotlán (Lago de Managua) ha estado habitada desde tiempos precolombinos. La ciudad moderna creció durante los siglos XIX y XX como centro administrativo y comercial del país. Managua ha combinado patrimonio y modernidad, aunque ha sido afectada por importantes terremotos, destacando el terremoto de 1972 que marcó su paisaje urbano.</p>
+                <p>Hoy la ciudad alberga monumentos, museos y espacios culturales que reflejan su identidad y su papel como capital de Nicaragua.</p>
+            </article>
+        </section>
+
+        <!-- LUGARES TURÍSTICOS -->
+        <section id="lugares" class="section lugares">
+            <h2>Lugares turísticos</h2>
+            <p>Algunos sitios emblemáticos en Managua que no te puedes perder:</p>
+
+            <div class="gallery">
+                <figure class="card">
+                    <img src="https://via.placeholder.com/600x400?text=Catedral+de+Managua" alt="Ruinas de la Catedral de Managua" loading="lazy">
+                    <figcaption>
+                        <h3>Catedral de Managua (ruinas)</h3>
+                        <p>La antigua Catedral Metropolitana (Catedral de Santiago) es uno de los puntos históricos más reconocibles, con las huellas del terremoto que vivió la ciudad.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <img src="https://via.placeholder.com/600x400?text=Loma+de+Tiscapa" alt="Mirador Loma de Tiscapa" loading="lazy">
+                    <figcaption>
+                        <h3>Loma de Tiscapa</h3>
+                        <p>Mirador con vistas panorámicas sobre la ciudad y el lago. En la loma hay monumentos históricos y espacios para contemplar Managua desde las alturas.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <img src="https://via.placeholder.com/600x400?text=Puerto+Salvador+Allende" alt="Puerto Salvador Allende" loading="lazy">
+                    <figcaption>
+                        <h3>Puerto Salvador Allende</h3>
+                        <p>Malecón sobre el lago Xolotlán con restaurantes, paseos en bote y buenas vistas al atardecer; lugar ideal para recreación y gastronomía.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <img src="https://via.placeholder.com/600x400?text=Museo+Nacional" alt="Museo Nacional de Nicaragua" loading="lazy">
+                    <figcaption>
+                        <h3>Museo Nacional / Museos</h3>
+                        <p>Espacios culturales donde conocer la historia, el arte y las colecciones que cuentan la vida y tradiciones nicaragüenses.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- GASTRONOMÍA -->
+        <section id="gastronomia" class="section gastronomia">
+            <h2>Gastronomía</h2>
+            <p>Sabores típicos de Managua y Nicaragua que debes probar:</p>
+
+            <div class="food-grid">
+                <article class="food-card">
+                    <img src="https://via.placeholder.com/400x300?text=Gallo+Pinto" alt="Gallo pinto" loading="lazy">
+                    <h3>Gallo pinto</h3>
+                    <p>Combinación de arroz y frijoles, acompañamiento clásico en desayunos y comidas diarias en Nicaragua.</p>
+                </article>
+
+                <article class="food-card">
+                    <img src="https://via.placeholder.com/400x300?text=Nacatamal" alt="Nacatamal" loading="lazy">
+                    <h3>Nacatamal</h3>
+                    <p>Nacatamal: masa de maíz rellena con carne, verduras y condimentos, envuelta en hoja de plátano. Platillo tradicional para celebraciones y fines de semana.</p>
+                </article>
+
+                <article class="food-card">
+                    <img src="https://via.placeholder.com/400x300?text=Vigoron" alt="Vigorón" loading="lazy">
+                    <h3>Vigorón</h3>
+                    <p>Plato popular a base de yuca, chicharrón y ensalada curtida; fácil de encontrar en mercados y comedores locales.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- CONTACTO / MAPA -->
+        <section id="contacto" class="section contacto">
+            <h2>Contacto / Mapa</h2>
+            <div class="contact-wrap">
+                <form id="contactForm" class="contact-form" action="#" method="post" novalidate>
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" required maxlength="100">
+
+                    <label for="email">Correo electrónico</label>
+                    <input id="email" name="email" type="email" required>
+
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                    <button type="submit" class="btn">Enviar</button>
+                    <p id="formSuccess" class="form-success" hidden>Gracias — tu mensaje fue enviado.</p>
+                </form>
+
+                <div class="map">
+                    <h3>Ubicación de Managua</h3>
+                    <!-- Mapa centrado en Managua (ajusta bbox/marker si deseas otra vista) -->
+                    <iframe
+                        title="Mapa de Managua"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-86.37%2C12.05%2C-86.14%2C12.25&layer=mapnik&marker=12.1364%2C-86.2514"
+                        style="border:0; width:100%; height:320px;"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <p><a href="https://www.openstreetmap.org/?mlat=12.1364&mlon=-86.2514#map=13/12.1364/-86.2514" target="_blank" rel="noopener">Ver Managua en OpenStreetMap</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="anio"></span> Guía turística de Managua — Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Pequeño script para manejar el formulario y el año del pie
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('formSuccess');
+            const year = document.getElementById('anio');
+            year.textContent = new Date().getFullYear();
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Validación simple (puedes mejorar / enviar mediante fetch)
+                if (form.checkValidity()) {
+                    success.hidden = false;
+                    form.reset();
+                    setTimeout(() => success.hidden = true, 5000);
+                } else {
+                    form.reportValidity();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
