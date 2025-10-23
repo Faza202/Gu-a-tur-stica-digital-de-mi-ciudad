@@ -1,9 +1,9 @@
 /*
     script.js
-    Ejemplo de script pensado para integrarse con un index.html típico.
+    Mejorado: Accesibilidad, robustez, modularidad y buenas prácticas.
     - Toggle de menú (id="menuToggle", id="mainNav")
     - Toggle de tema oscuro (id="themeToggle")
-    - Validación simple de formulario (id="contactForm")
+    - Validación mejorada de formulario (id="contactForm")
     - Smooth scroll para enlaces con data-scroll
     - Carga de contenido dinámico en #features (intenta /data/features.json, usa fallback)
 */
@@ -25,7 +25,7 @@
         loadFeatures();
     });
 
-    // 1) Menu mobile toggle
+    // 1) Menú móvil accesible
     function initMenuToggle() {
         const toggle = $('#menuToggle');
         const nav = $('#mainNav');
@@ -34,10 +34,11 @@
             const expanded = toggle.getAttribute('aria-expanded') === 'true';
             toggle.setAttribute('aria-expanded', String(!expanded));
             nav.classList.toggle('open');
+            nav.setAttribute('aria-hidden', expanded ? 'true' : 'false');
         });
     }
 
-    // 2) Theme toggle with localStorage
+    // 2) Tema oscuro con preferencia de usuario
     function initTheme() {
         const key = 'site-theme';
         const toggle = $('#themeToggle');
@@ -45,7 +46,8 @@
             document.documentElement.classList.toggle('dark', theme === 'dark');
             if (toggle) toggle.setAttribute('aria-pressed', String(theme === 'dark'));
         };
-        const stored = localStorage.getItem(key) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const stored = localStorage.getItem(key) ||
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         apply(stored);
         if (!toggle) return;
         on(toggle, 'click', () => {
@@ -55,7 +57,7 @@
         });
     }
 
-    // 3) Smooth scroll for anchors with data-scroll
+    // 3) Scroll suave para anclas con data-scroll
     function initSmoothScroll() {
         on(document, 'click', (e) => {
             const a = e.target.closest && e.target.closest('a[data-scroll]');
@@ -66,29 +68,35 @@
             if (!target) return;
             e.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // update hash without jump
             history.replaceState(null, '', href);
         });
     }
 
-    // 4) Contact form simple validation and fake submit
+    // 4) Validación y feedback de formulario de contacto
     function initContactForm() {
         const form = $('#contactForm');
         if (!form) return;
-        const feedback = $('#formFeedback');
+        let feedback = $('#formFeedback');
+        if (!feedback) {
+            feedback = document.createElement('div');
+            feedback.id = 'formFeedback';
+            feedback.setAttribute('role', 'alert');
+            feedback.className = 'feedback';
+            form.appendChild(feedback);
+        }
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             clearErrors(form);
             const data = new FormData(form);
-            const name = (data.get('name') || '').trim();
+            const nombre = (data.get('nombre') || '').trim();
             const email = (data.get('email') || '').trim();
-            const message = (data.get('message') || '').trim();
+            const mensaje = (data.get('mensaje') || '').trim();
 
             const errors = {};
-            if (!name) errors.name = 'Ingresa tu nombre';
-            if (!email || !/^\S+@\S+\.\S+$/.test(email)) errors.email = 'Ingresa un correo válido';
-            if (!message || message.length < 10) errors.message = 'Mensaje demasiado corto';
+            if (!nombre) errors.nombre = 'Ingresa tu nombre';
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Ingresa un correo válido';
+            if (!mensaje || mensaje.length < 10) errors.mensaje = 'El mensaje debe tener al menos 10 caracteres';
 
             if (Object.keys(errors).length) {
                 showErrors(form, errors);
@@ -102,7 +110,7 @@
             setTimeout(() => {
                 form.reset();
                 form.querySelector('button[type="submit"]').disabled = false;
-                showFeedback('Mensaje enviado. Gracias.', 'success', feedback);
+                showFeedback('Mensaje enviado. ¡Gracias!', 'success', feedback);
             }, 900);
         });
     }
@@ -119,19 +127,22 @@
                 el.parentElement && el.parentElement.appendChild(span);
             }
             span.textContent = errors[name];
+            el.setAttribute('aria-invalid', 'true');
         });
     }
 
     function clearErrors(form) {
         $$('.field-error', form).forEach(n => n.remove());
-        $$('.invalid', form).forEach(n => n.classList.remove('invalid'));
+        $$('.invalid', form).forEach(n => {
+            n.classList.remove('invalid');
+            n.removeAttribute('aria-invalid');
+        });
     }
 
     function showFeedback(text, type = 'info', container) {
         if (!container) return;
         container.textContent = text;
-        container.className = `feedback ${type}`; // permitir estilos .feedback.success/.error/.info
-        // Desaparece después de 4s si es success
+        container.className = `feedback ${type}`;
         if (type === 'success') setTimeout(() => container.textContent = '', 4000);
     }
 
@@ -167,7 +178,13 @@
     }
 
     function escapeHtml(s = '') {
-        return String(s).replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+        return String(s).replace(/[&<>"']/g, (ch) => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[ch]));
     }
 
 })();
