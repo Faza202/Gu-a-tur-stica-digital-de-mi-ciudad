@@ -2,11 +2,11 @@
 
 /* === Variables de tema === */
 :root {
-    --bg: #f5f7fa;
-    --card: #fff;
-    --text: #1f2937;
+    --bg: rgb(0, 102, 255);
+    --card: #2063c9;
+    --text: #000000;
     --muted: #6b7280;
-    --primary: #2563eb;
+    --primary: #2cdfff;
     --accent: #06b6d4;
     --radius: 10px;
     --glass: rgba(255,255,255,0.7);
@@ -22,12 +22,12 @@
 
 /* === Modo oscuro (opcional, requiere .dark en <html>) === */
 html.dark {
-    --bg: #181e29;
-    --card: #23293a;
-    --text: #f3f4f6;
-    --muted: #a1a1aa;
-    --primary: #60a5fa;
-    --accent: #06b6d4;
+    --bg: #003cff;
+    --card: #78a8f1;
+    --text: #000000;
+    --muted: #66ff48;
+    --primary: #00a2ff;
+    --accent: #5fb1e9;
     --glass: rgba(36,41,54,0.7);
     --shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
@@ -98,7 +98,7 @@ body {
     box-shadow: 0 4px 10px rgba(37,99,235,0.18);
 }
 
-/* === Navegación === */
+/* === Navegaciï¿½n === */
 .main-nav ul, .nav {
     display: flex;
     gap: 10px;
@@ -126,7 +126,7 @@ body {
     color: var(--primary);
 }
 
-/* === Títulos === */
+/* === Tï¿½tulos === */
 h1, h2, h3 {
     margin: 0 0 10px 0;
     color: var(--text);
@@ -143,7 +143,7 @@ h3 { font-size: 1.1rem; color: var(--accent); }
     background: transparent;
 }
 
-/* === Tarjetas y galería === */
+/* === Tarjetas y galerï¿½a === */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
