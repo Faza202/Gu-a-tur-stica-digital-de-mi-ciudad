@@ -4,7 +4,7 @@
 :root {
     --bg: rgb(0, 102, 255);
     --card: #2063c9;
-    --text: #ffffff;
+    --text: #000000;
     --muted: #6b7280;
     --primary: #2cdfff;
     --accent: #06b6d4;
@@ -23,11 +23,11 @@
 /* === Modo oscuro (opcional, requiere .dark en <html>) === */
 html.dark {
     --bg: #003cff;
-    --card: #ffffff;
+    --card: #78a8f1;
     --text: #000000;
     --muted: #5595dd;
     --primary: #00a2ff;
-    --accent: #020202;
+    --accent: #5fb1e9;
     --glass: rgba(36,41,54,0.7);
     --shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
